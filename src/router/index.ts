@@ -14,8 +14,13 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/basic-counter',
-    name: 'Basic counter',
+    name: 'BasicCounter',
     component: () => import(/* webpackChunkName: "basic-counter" */ '../views/BasicCounter.vue'),
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: () => import(/* webpackChunkName: "settings" */ '../views/Settings.vue'),
   },
 ];
 

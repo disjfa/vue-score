@@ -18,6 +18,11 @@ const basic: Module<BasicCounterState, RootState> = {
       const player = players.find((p: BasicCounterPlayer) => p.id === id) as BasicCounterPlayer;
       player.name = name;
     },
+    updateScore({ players }, userData) {
+      const { id, score } = userData;
+      const player = players.find((p: BasicCounterPlayer) => p.id === id) as BasicCounterPlayer;
+      player.score = score;
+    },
     addPlayer({ players }) {
       players.push({
         id: v4(),
@@ -27,12 +32,6 @@ const basic: Module<BasicCounterState, RootState> = {
     },
   },
   actions: {
-    addPlayer({ commit }) {
-      commit('addPlayer');
-    },
-    updateName({ commit }, userData) {
-      commit('updateName', userData);
-    },
     reset({ commit }) {
       commit('reset');
       commit('addPlayer');

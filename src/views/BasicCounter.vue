@@ -1,25 +1,24 @@
 <template>
-  <div class="app basic">
+  <div class="app basic bg-nephritis">
     <div class="p-3 text-right">
-      <h1 class="mb-0">Basic counter</h1>
+      <h2 class="mb-0 text-wet-asphalt">{{ $t('page.basicCounter') }}</h2>
     </div>
-    <div class="basic-content ">
+    <div class="basic-content bg-sunflower">
       <basic-row v-for="player in players" :key="player.id" :player="player"/>
     </div>
     <div class="p-3 d-flex justify-content-between">
       <div class="text-left">
         <div class="btn-group">
-          <button type="button" @click="addPlayer" class="btn btn-secondary">
-            Add player
-          </button>
-          <button type="button" @click="addPlayer" class="btn btn-secondary">
-            Add player
+          <button type="button" @click="addPlayer" class="btn btn-peter-river">
+            <i class="fa fa-fw fa-user-plus"></i>
+            {{ $t('button.addPlayer') }}
           </button>
         </div>
       </div>
       <div class="text-right">
-        <button type="button" @click="reset" class="btn btn-danger">
-          Reset
+        <button type="button" @click="reset" class="btn btn-pomegranate">
+          <i class="fa fa-fw fa-trash"></i>
+          {{ $t('button.reset') }}
         </button>
       </div>
     </div>
@@ -37,7 +36,7 @@ export default defineComponent({
   },
   methods: {
     addPlayer() {
-      this.$store.dispatch('basic/addPlayer');
+      this.$store.commit('basic/addPlayer');
     },
     reset() {
       this.$store.dispatch('basic/reset');
@@ -57,7 +56,6 @@ export default defineComponent({
 
 .basic-content {
   flex: 1;
-  background: yellow;
   display: flex;
   flex-direction: column;
   align-content: space-evenly;
