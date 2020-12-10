@@ -1,10 +1,20 @@
 <template>
   <div class="app basic bg-nephritis">
-    <div class="p-3 text-right">
-      <h2 class="mb-0 text-wet-asphalt">{{ $t('page.basicCounter') }}</h2>
-    </div>
+    <app-header class="text-wet-asphalt">
+      {{ $t('page.basicCounter') }}
+    </app-header>
     <div class="basic-content bg-sunflower">
-      <basic-row v-for="player in players" :key="player.id" :player="player"/>
+      <template v-if="players.length">
+        <basic-row v-for="player in players" :key="player.id" :player="player"/>
+      </template>
+      <template v-else class="text-center">
+        <div class="text-center">
+          <button type="button" @click="addPlayer" class="btn btn-peter-river">
+            <i class="fa fa-fw fa-user-plus"></i>
+            {{ $t('button.addPlayer') }}
+          </button>
+        </div>
+      </template>
     </div>
     <div class="p-3 d-flex justify-content-between">
       <div class="text-left">
@@ -27,19 +37,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import BasicRow from './basic/BasicRow.vue';
+import BasicRow from '@/views/basic/BasicRow.vue';
+import AppHeader from '@/components/AppHeader.vue';
 
 export default defineComponent({
   name: 'BasicCounter',
   components: {
     BasicRow,
+    AppHeader,
   },
   methods: {
     addPlayer() {
       this.$store.commit('basic/addPlayer');
     },
     reset() {
-      this.$store.dispatch('basic/reset');
+      this.$store.commit('basic/reset');
     },
   },
   computed: {

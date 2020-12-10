@@ -2,6 +2,10 @@ export default {
   app: {
     title: 'Vue score',
   },
+  reload: {
+    message: 'An update is available',
+    button: 'Update',
+  },
   page: {
     home: 'Home page',
     about: 'About',

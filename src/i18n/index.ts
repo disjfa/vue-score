@@ -2,9 +2,14 @@ import { createI18n } from 'vue-i18n';
 import en from '@/locales/en';
 import nl from '@/locales/nl';
 
-const index = createI18n({
-  legacy: false,
-  locale: 'en',
+let locale = window.localStorage.getItem('_locale');
+if (!locale) {
+  locale = 'en';
+}
+
+const i18n = createI18n({
+  legacy: true,
+  locale,
   fallbackLocale: 'en',
   messages: {
     en,
@@ -12,4 +17,4 @@ const index = createI18n({
   },
 });
 
-export default index;
+export default i18n;
